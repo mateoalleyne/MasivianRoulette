@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+        {% block title %}
+            Masivian Roulette
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    {% block body %}
+        <h1>Masivian Roulette</h1>
+        <div>
+            <h2>Players</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Funds</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                    <tr>
+                        <td>{{ player.id }}</td>
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.funds }}</td>
+                        <td><a href="{% url 'updatePlayer' player.id %}">UPDATE</a></td>
+                        <td><a href="{% url 'deletePlayer' player.id %}">DELETE</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h2>Roulette</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Bets</th>
+                        <th>Open</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for roulette in roulettes %}
+                    <tr>
+                        <td>{{ roulette.id }}</td>
+                        <td>{{ roulette.bets }}</td>
+                        <td>{{ roulette.open }}</td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                
+        </div>
+        <form action="{% url 'createPlayer' %}">
+            <input type="submit" value="Create Player">
+        </form>
+        <form action="{% url 'createRoulette' %}">
+            <input type="submit" value="Create Roulette">
+        </form>
+
+        <form action="{% url 'placeBet'%?idroulette={{idroulette.value}}?idplayer={{idplayer.value}}}">
+            <label for="idroulette">Roulette ID</label><input type="number" id="idroulette">
+            <label for="idplayer">player ID</label><input type="number" id="idplayer">
+            <input type="submit" value="Place Bet">
+
+        </form>
+      
+    {% endblock body %}
+</body>
+</html>

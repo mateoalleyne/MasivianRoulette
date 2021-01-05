@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Place Bet
+
+{% endblock title %}
+{% block body %}
+<h1>Place Bet</h1>
+
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create-Edit</button>
+    </form>
+
+
+
+{% endblock body %}

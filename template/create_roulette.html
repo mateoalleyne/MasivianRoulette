@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Create Roulette
+
+{% endblock title %}
+{% block body %}
+<h1>Create Roulette</h1>
+
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create-Edit</button>
+    </form>
+
+
+
+{% endblock body %}

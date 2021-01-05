@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Register/Edit Player
+
+{% endblock title %}
+{% block body %}
+<h1>Register/Edit Player</h1>
+
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register-Edit</button>
+    </form>
+
+
+
+{% endblock body %}
